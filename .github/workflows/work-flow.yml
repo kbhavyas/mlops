@@ -29,8 +29,6 @@ jobs:
             pip install dvc
       - name: Data Setup
         run: |
-            dvc remote modify storage gdrive_use_service_account true
-            dvc remote modify storage gdrive_service_account_json_file_path /tmp/servicekey.json
             dvc pull
             echo ls -la
             echo "Data setup successful"
