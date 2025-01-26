@@ -17,7 +17,7 @@ jobs:
 
       - name : Copy Service Key
         run: |
-            echo "${{ secrets.DRIVE_SERVICE_KEY }}" > | base64 --decode > servicekey.json
+            echo "${{ secrets.DRIVE_SERVICE_KEY }}" | base64 --decode > servicekey.json
       - name : Install Dependency
         run: |
             pip install dvc
