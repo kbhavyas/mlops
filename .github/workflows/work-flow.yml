@@ -1,9 +1,3 @@
-# This workflow executes several linters on changed files based on languages used in your code base whenever
-# you push a code or open a pull request.
-#
-# You can adjust the behavior by modifying this file.
-# For more information, see:
-# https://github.com/github/super-linter
 name: Lint Code Base
 
 on:
@@ -12,31 +6,21 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  Model PipeLine:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-    - name: Lint Code Base
-      uses: github/super-linter@v4
-      env:
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     
-    - name : Copy Service Key
-      run: |
+      - name : Copy Service Key
+        run: |
             echo "${{ secrets.DRIVE_SERVICE_KEY }}" > /tmp/servicekey.json
-
-    - name: Data Setup
-      run: |
-            dvc remote add -d storage gdrive://1E0g29-8oWjiWQAarMfH-V4Yoiy2Hl0L2
-            dvc remote modify storage gdrive_use_service_account true
-            dvc remote modify storage gdrive_service_account_json_file_path /tmp/servicekey.json
-            dvc pull
-            echo ls -la
-            echo "Data setup successful"
