@@ -12,8 +12,8 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  run-lint:
-    runs-on: ubuntu-latest
+  Model PipeLine:
+  runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
