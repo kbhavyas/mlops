@@ -24,6 +24,9 @@ jobs:
       - name : Copy Service Key
         run: |
             echo "${{ secrets.DRIVE_SERVICE_KEY }}" > /tmp/servicekey.json
+      - name : Install Dependency
+        run: |
+            pip install dvc
       - name: Data Setup
         run: |
             dvc remote add -d storage gdrive://1E0g29-8oWjiWQAarMfH-V4Yoiy2Hl0L2
