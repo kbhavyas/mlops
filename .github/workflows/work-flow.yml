@@ -1,0 +1,34 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  Model-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name : Copy Service Key
+        run: |
+            echo "${{ secrets.DRIVE_SERVICE_KEY }}" | base64 --decode > servicekey.json
+      - name : Install Dependency
+        run: |
+            pip install dvc
+            pip install dvc-gdrive
+            pip install flake8
+      - name: Lint Code Base
+        run: |
+            flake8 .
+      - name: Data Setup
+        run: |
+            echo ls -la
+            cat servicekey.json
+            dvc pull
+            echo "Data setup successful"
