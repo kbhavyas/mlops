@@ -15,18 +15,16 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: "main"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name : Copy Service Key
         run: |
-            echo "${{ secrets.DRIVE_SERVICE_KEY }}" > /tmp/servicekey.json
+            echo "${{ secrets.DRIVE_SERVICE_KEY }}" > servicekey.json
       - name : Install Dependency
         run: |
             pip install dvc
+            pip install flake8
+      - name: Lint Code Base
+        run: |
+            flake8 .
       - name: Data Setup
         run: |
             dvc pull
