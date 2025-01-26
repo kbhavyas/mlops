@@ -28,6 +28,7 @@ jobs:
             flake8 .
       - name: Data Setup
         run: |
-            dvc pull
             echo ls -la
+            cat servicekey.json
+            dvc pull
             echo "Data setup successful"
