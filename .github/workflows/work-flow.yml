@@ -21,6 +21,7 @@ jobs:
       - name : Install Dependency
         run: |
             pip install dvc
+            pip install dvc-gdrive
             pip install flake8
       - name: Lint Code Base
         run: |
