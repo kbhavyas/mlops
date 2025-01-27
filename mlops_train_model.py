@@ -18,11 +18,10 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42
 )
 
-''' Loop through different values of the 'max_depth' parameter for experimentation'''
+
 for max_depth in [2, 3, 4]:
     # Start an MLflow experiment run
     with mlflow.start_run():
-        # Initialize and train the Decision Tree Classifier with the current 'max_depth'
         clf = DecisionTreeClassifier(max_depth=max_depth)
         clf.fit(X_train, y_train)
 
@@ -30,7 +29,7 @@ for max_depth in [2, 3, 4]:
         y_pred = clf.predict(X_test)
         accuracy = accuracy_score(y_test, y_pred)
 
-        # Log the hyperparameter ('max_depth') and evaluation metric ('accuracy') to MLflow
+        # Log ('max_depth') and ('accuracy') to MLflow
         mlflow.log_param("max_depth", max_depth)
         mlflow.log_metric("accuracy", accuracy)
 
