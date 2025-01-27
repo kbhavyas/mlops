@@ -1,6 +1,5 @@
 import mlflow
 import mlflow.sklearn
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
@@ -37,4 +36,5 @@ for max_depth in [2, 3, 4]:
         mlflow.sklearn.log_model(clf, "decision_tree_model")
 
         # Print the results for the current experiment run
-        print(f"Run completed for max_depth={max_depth}, accuracy={accuracy:.4f}")
+        print("Run completed..)
+        print(f"for max_depth={max_depth}, accuracy={accuracy:.4f}")
