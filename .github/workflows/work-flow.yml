@@ -24,6 +24,7 @@ jobs:
             pip install dvc-gdrive
             pip install flake8
             pip install mlflow
+            pip install optuna
       - name: Lint Code Base
         run: |
             echo "flake"
