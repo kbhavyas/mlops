@@ -36,5 +36,5 @@ for max_depth in [2, 3, 4]:
         mlflow.sklearn.log_model(clf, "decision_tree_model")
 
         # Print the results for the current experiment run
-        print("Run completed..)
+        print("Run completed..")
         print(f"for max_depth={max_depth}, accuracy={accuracy:.4f}")
