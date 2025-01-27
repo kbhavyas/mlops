@@ -9,8 +9,8 @@ import pandas as pd
 iris = pd.read_csv("data/Iris.csv")
 
 # Separate features (X) and the target variable (y)
-X = iris.drop(columns=["Species"])  # Drop the target column to get features
-y = iris["Species"]  # Target variable
+X = iris.drop(columns=["species"])  # Drop the target column to get features
+y = iris["species"]  # Target variable
 
 # Split the dataset into training and testing sets (70% train, 30% test)
 X_train, X_test, y_train, y_test = train_test_split(
