@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 
 # Load the Iris dataset from the CSV file
-iris = pd.read_csv("data/iris_data.csv")
+iris = pd.read_csv("data/Iris.csv")
 
 # Separate features (X) and the target variable (y)
 X = iris.drop(columns=["target"])  # Drop the target column to get features
