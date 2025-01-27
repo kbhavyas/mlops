@@ -14,7 +14,9 @@ X = iris.drop(columns=["target"])  # Drop the target column to get features
 y = iris["target"]  # Target variable
 
 # Split the dataset into training and testing sets (70% train, 30% test)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
 
 # Loop through different values of the 'max_depth' parameter for experimentation
 for max_depth in [2, 3, 4]:
@@ -37,4 +39,3 @@ for max_depth in [2, 3, 4]:
 
         # Print the results for the current experiment run
         print(f"Run completed for max_depth={max_depth}, accuracy={accuracy:.4f}")
-
