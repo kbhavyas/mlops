@@ -36,5 +36,8 @@ jobs:
       - name: Train Model
         run: |
             echo "Training model..."
-            python3 mlops_train_model.py
-            
+            python3 mlops_train_test_model.py
+      - name: Hyper parameter tuning
+        run: |
+            echo "Hyper parameter Tuning"
+            python3 mlops_hyper_parameter_tune.py
