@@ -11,8 +11,8 @@ import pandas as pd
 iris = pd.read_csv("data/Iris.csv")
 
 # Separate features (X) and the target variable (y)
-X = iris.drop(columns=["Species"])  # Drop the target column to get features
-y = iris["Species"]  # Target variable
+X = iris.drop(columns=["species"])  # Drop the target column to get features
+y = iris["species"]  # Target variable
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.4, random_state=42
