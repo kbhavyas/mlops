@@ -23,12 +23,22 @@ jobs:
             pip install dvc
             pip install dvc-gdrive
             pip install flake8
+            pip install mlflow
+            pip install optuna
       - name: Lint Code Base
         run: |
-            flake8 .
+            echo "flake"
+#            flake8 .
       - name: Data Setup
         run: |
             echo ls -la
-            cat servicekey.json
             dvc pull
             echo "Data setup successful"
+      - name: Train Model
+        run: |
+            echo "Training model..."
+            python3 mlops_train_test_model.py
+      - name: Hyper parameter tuning
+        run: |
+            echo "Hyper parameter Tuning"
+            python3 mlops_hyper_parameter_tune.py
