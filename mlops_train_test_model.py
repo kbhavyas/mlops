@@ -31,7 +31,7 @@ for max_depth in [2, 3, 4]:
         # Log ('max_depth') and ('accuracy') to MLflow
         mlflow.log_param("max_depth", max_depth)
         mlflow.log_metric("accuracy", accuracy)
-
+        print(accuracy)
         # Log the trained model to MLflow
         mlflow.sklearn.log_model(clf, "decision_tree_model")
 
