@@ -23,6 +23,7 @@ jobs:
             pip install dvc
             pip install dvc-gdrive
             pip install flake8
+            pip install mlflow
       - name: Lint Code Base
         run: |
             flake8 .
