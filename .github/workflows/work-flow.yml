@@ -29,6 +29,10 @@ jobs:
       - name: Data Setup
         run: |
             echo ls -la
-            cat servicekey.json
             dvc pull
             echo "Data setup successful"
+      - name: Train Model
+        run: |
+            echo "Training model..."
+            python3 mlops_train_model.py
+            
